@@ -1,16 +1,16 @@
 extends ../shared/template
 
 block content
+  link(href='/css/full.css', rel='stylesheet')
   if(!user.userId)
-    #login-splash
-      .row.clearfix.loginspace
-        .col-sm-12.column
 
-      .row.clearfix
-        .col-sm-2.column
-        .col-sm-3.column
+    #login-splash.container
+      .row.clearfix.loginspace
+        .col-md-4.column
+        .col-md-4.column.centerspace
           button.btn.btn-success.btn-block.btn-lg#login-btn1(type='button') Login
-        .col-sm-2.column
-        .col-sm-3.column
           button.btn.btn-lg.btn-primary.btn-block#register(type='button') Register
-        .col-sm-2.column
+        .col-md-4.column
+
+block scripts
+  script(src='/js/es6/compiled/landing.js')
