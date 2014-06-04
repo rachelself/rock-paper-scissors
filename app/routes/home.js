@@ -21,13 +21,23 @@ exports.authenticate = (req, res)=>{
   console.log(req.body);
   var obj = {email: req.body.email, name: req.body.name, password: req.body.password};
   if(req.body['auth-type'] === 'login') {
-    User.login(obj, ()=>{
-      res.redirect('tasks/index');
+    User.login(obj, u=>{
+      if(u)
+      {
+        req.session.userId = u._id;
+        res.redirect('/games');
+      }
+      res.redirect('/');
     });
   }
   else {
-    User.register(obj, ()=>{
-      res.redirect('tasks/index');
+    User.register(obj, u=>{
+      if(u)
+      {
+        req.session.userId = u._id;
+        res.redirect('/games');
+      }
+      res.redirect('/');
     });
   }
 };
