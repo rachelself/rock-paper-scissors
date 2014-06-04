@@ -5,7 +5,8 @@ block content
   div
     h3 Number of Available Games:
       p= games.length
-  button.newgame.btn.btn-default New Game
+  form(action='/games', method='POST')
+    button.newgame.btn.btn-default New Game
 
   table
     thead
@@ -17,4 +18,4 @@ block content
         tr
           td= game._id
           td
-            a(href='/game/#{game._id}').joingame.btn.btn-default Join Game
+            a(href='/games/#{game._id}').joingame.btn.btn-default Join Game
