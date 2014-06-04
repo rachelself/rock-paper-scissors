@@ -1,0 +1,13 @@
+.row.clearfix
+  .col-sm-4.column
+  .col-sm-4.column
+    form(role='form' action='/login' method='post')
+      input(name='auth-type' value='#{type}' hidden='true')
+      .form-group
+        label(for='emailinput1') Email
+          input.form-control#emailinput1(type='email' name='email')
+      .form-group
+        label(for='passwordinput1') Password
+          input.form-control#passwordinput1(type='password' name='password')
+      button.btn.btn-default(type='submit' class='#{type}') Submit
+  .col-sm-4.column

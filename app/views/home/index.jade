@@ -1,4 +1,16 @@
 extends ../shared/template
 
 block content
-  h1= title
+  if(!user.userId)
+    #login-splash
+      .row.clearfix.loginspace
+        .col-sm-12.column
+
+      .row.clearfix
+        .col-sm-2.column
+        .col-sm-3.column
+          button.btn.btn-success.btn-block.btn-lg#login-btn1(type='button') Login
+        .col-sm-2.column
+        .col-sm-3.column
+          button.btn.btn-lg.btn-primary.btn-block#register(type='button') Register
+        .col-sm-2.column
