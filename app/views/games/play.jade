@@ -1,4 +1,18 @@
 extends ../shared/template
 
 block content
-  h1 You're Playing A Game!
+  .container
+    .row.clearfix
+        .col-md-12.column
+          h3.timer
+            | a cool timer goes here
+      .row.clearfix
+        .col-md-6.column.picked
+        .col-md-6.column.picked
+      .row.clearfix
+        .col-md-4.column
+          img.gamepiece#rock(src='/img/rock.png')
+        .col-md-4.column
+          img.gamepiece#paper(src='/img/paper.png')
+        .col-md-4.column
+          img.gamepiece#scissors(src='/img/scissors.png')
