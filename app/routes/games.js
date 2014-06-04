@@ -1,9 +1,11 @@
 'use strict';
 
-// var traceur = require('traceur');
-// var User = traceur.require(__dirname + '/../models/user.js');
+var traceur = require('traceur');
+var Game = traceur.require(__dirname + '/../models/game.js');
 
 exports.index = (req, res)=>{
-  // Game
-  res.render('games/index', {games: [{_id: 2}], title: 'Play Game'});
+  Game.findOpenGames(games=>
+  {
+    res.render('games/index', {games: games, title: 'Play Game'});
+  });
 };
