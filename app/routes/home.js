@@ -28,7 +28,10 @@ exports.authenticate = (req, res)=>{
         req.session.userId = u._id;
         res.redirect('/games');
       }
-      res.redirect('/');
+      else
+      {
+        res.redirect('/');
+      }
     });
   }
   else {
@@ -38,7 +41,10 @@ exports.authenticate = (req, res)=>{
         req.session.userId = u._id;
         res.redirect('/games');
       }
-      res.redirect('/');
+      else
+      {
+        res.redirect('/');
+      }
     });
   }
 };
