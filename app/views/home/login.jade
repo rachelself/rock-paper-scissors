@@ -9,5 +9,9 @@
       .form-group
         label(for='passwordinput1') Password
           input.form-control#passwordinput1(type='password' name='password')
+      if(type==='register')
+        .form-group
+          label(for='nameinput1') Name
+            input.form-control#nameinput1(type='text' name='name')
       button.btn.btn-default(type='submit' class='#{type}') Submit
   .col-sm-4.column

@@ -1,0 +1,20 @@
+extends ../shared/template
+
+block content
+  h1 Game Index - Matches
+  div
+    h3 Number of Available Games:
+      p 0
+  button.newgame.btn.btn-default New Game
+
+  table
+    thead
+      tr
+        th Users
+        th Join a Game!
+    tbody
+      each game in games
+        tr
+          td= game.id
+          td
+            a(href='/game/#{game.id}').joingame.btn.btn-default Join Game

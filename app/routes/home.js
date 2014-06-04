@@ -22,12 +22,12 @@ exports.authenticate = (req, res)=>{
   var obj = {email: req.body.email, password: req.body.password};
   if(req.body['auth-type'] === 'login') {
     User.login(obj, ()=>{
-      res.redirect('tasks/index');
+      res.redirect('/game');
     });
   }
   else {
     User.register(obj, ()=>{
-      res.redirect('tasks/index');
+      res.redirect('/game');
     });
   }
 };
