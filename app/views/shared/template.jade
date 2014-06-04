@@ -16,13 +16,26 @@ html
   body
     .container
       .row.clearfix
-        .col-md-12.column
-          h3.text-center Rock Paper Scissors
-          if(user.userId)
-            ul.nav.nav-tabs
-              li: a(href='/') Home
-              li: a(href='/tasks') Tasks
-              li: a(href='/logout') Logout
+          .col-md-12.column
+            nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(role='navigation')
+              .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.navbar-brand(href='/')
+                  img.logo(src='img/logo.png')
+              #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                if(user)
+                  ul.nav.navbar-nav.navbar-right
+                    li
+                      a(href='/logout') Logout
+                if(!user)
+                  ul.nav.navbar-nav.navbar-right
+                    li
+                      a.btn.disabled(href='#') Welcome
+
 
     block content
 

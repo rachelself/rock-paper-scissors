@@ -1,20 +1,29 @@
 extends ../shared/template
 
 block content
-  h1 Game Index - Matches
-  div
-    h3 Number of Available Games:
-      p= games.length
-  button.newgame.btn.btn-default New Game
-
-  table
-    thead
-      tr
-        th Users
-        th Join a Game!
-    tbody
-      each game in games
-        tr
-          td= game._id
-          td
-            a(href='/game/#{game._id}').joingame.btn.btn-default Join Game
+  .container
+    .row.clearfix
+        .col-md-12.column
+          .page-header
+            h1
+              small Available Games
+      .row.clearfix
+        .col-md-12.column
+          dl
+            dt Number of Available Games
+            dt= games.length
+          form(action='/games', method='POST')
+            button.btn.btn-info New Game
+          table.table.table-hover
+            thead
+              tr
+                th
+                  | Users
+                th
+                  | Join a Game!
+            tbody
+              each game in games
+                tr
+                  td= game._id
+                  td
+                    a.btn.btn-success.btn-default.joingame(href='/game/#{game._id}') Join Game
