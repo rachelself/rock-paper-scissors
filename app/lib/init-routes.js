@@ -26,7 +26,6 @@ function load(app, fn){
   app.get('/register', dbg, home.register);
   app.get('/games', dbg, games.index);
   app.get('/games/:id', dbg, games.play);
-
   app.post('/games', dbg, games.new);
 
   console.log('Routes Loaded');
