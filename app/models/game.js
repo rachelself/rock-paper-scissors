@@ -32,6 +32,14 @@ class Game{
       fn(game);
     });
   }
+
+  static findOpenGames(fn)
+  {
+    gameCollection.find({p2Id: null}).toArray((e, games)=>
+    {
+      fn(games);
+    });
+  }
 }
 
 module.exports = Game;
