@@ -19,15 +19,26 @@ exports.register = (req, res)=>{
 
 exports.authenticate = (req, res)=>{
   console.log(req.body);
-  var obj = {email: req.body.email, password: req.body.password};
+  var obj = {email: req.body.email, name: req.body.name, password: req.body.password};
   if(req.body['auth-type'] === 'login') {
-    User.login(obj, ()=>{
-      res.redirect('/game');
+
+    User.login(obj, u=>{
+      if(u)
+      {
+        req.session.userId = u._id;
+        res.redirect('/games');
+      }
+      res.redirect('/');
     });
   }
   else {
-    User.register(obj, ()=>{
-      res.redirect('/game');
+    User.register(obj, u=>{
+      if(u)
+      {
+        req.session.userId = u._id;
+        res.redirect('/games');
+      }
+      res.redirect('/');
     });
   }
 };
