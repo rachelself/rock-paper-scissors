@@ -4,5 +4,6 @@
 // var User = traceur.require(__dirname + '/../models/user.js');
 
 exports.index = (req, res)=>{
-  res.render('game/index', {title: 'Play Game'});
+  // Game
+  res.render('games/index', {games: [{_id: 2}], title: 'Play Game'});
 };

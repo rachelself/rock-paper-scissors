@@ -4,7 +4,7 @@ block content
   h1 Game Index - Matches
   div
     h3 Number of Available Games:
-      p 0
+      p= games.length
   button.newgame.btn.btn-default New Game
 
   table
@@ -15,6 +15,6 @@ block content
     tbody
       each game in games
         tr
-          td= game.id
+          td= game._id
           td
-            a(href='/game/#{game.id}').joingame.btn.btn-default Join Game
+            a(href='/game/#{game._id}').joingame.btn.btn-default Join Game
