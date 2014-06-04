@@ -19,7 +19,7 @@ exports.register = (req, res)=>{
 
 exports.authenticate = (req, res)=>{
   console.log(req.body);
-  var obj = {email: req.body.email, password: req.body.password};
+  var obj = {email: req.body.email, name: req.body.name, password: req.body.password};
   if(req.body['auth-type'] === 'login') {
     User.login(obj, ()=>{
       res.redirect('tasks/index');

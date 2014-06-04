@@ -10,6 +10,9 @@ class User{
         var user = new User();
         user.email = obj.email;
         user.password = bcrypt.hashSync(obj.password, 8);
+        user.name = obj.name;
+        user.wins = 0;
+        user.isOnline = false;
         userCollection.save(user, ()=>fn(user));
       }else{
         fn(null);
