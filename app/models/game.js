@@ -15,6 +15,12 @@ class Game{
     }
   }
 
+  join(userId)
+  {
+    userId = Mongo.ObjectID(userId);
+    this.p2Id = this.p2Id ? this.p2Id : userId;
+  }
+
   static create(userId, fn)
   {
     var game = new Game();
