@@ -29,14 +29,14 @@ html
                 a.navbar-brand(href='/')
                   img.logo(src='img/logo.png')
               #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                if(user)
+                if(user.userId)
                   ul.nav.navbar-nav.navbar-right
-                    li
+                    li #{user.email}
                     li
                       a(href='/logout') Logout
-                if(!user)
+                else if(!user.userId)
                   ul.nav.navbar-nav.navbar-right
-                    li
+                    li.active
                       a.btn.disabled(href='#') Welcome
 
 
