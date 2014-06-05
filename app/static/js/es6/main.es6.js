@@ -12,6 +12,12 @@ function ajax(url, type, data={}, success=r=>console.log(r), dataType='html'){
   function init() {
     $('#login-splash').on('click', '#login-btn1', login);
     $('#login-splash').on('click', '#register', register);
+    $('.gamepiece').click(playPiece);
+  }
+
+  function playPiece(){
+    var piece = $(this).attr('id');
+    alert(piece);
   }
 
   function login() {
