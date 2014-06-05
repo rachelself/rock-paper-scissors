@@ -38,5 +38,6 @@ server.listen(port, function(){
 var sockets = traceur.require(__dirname + '/lib/sockets.js');
 var io = require('socket.io').listen(server, {log:true, 'log level':2});
 io.of('/app').on('connection', sockets.connection);
+io.of('/game').on('connection', sockets.connectToGame);
 
 module.exports = app;

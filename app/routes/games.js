@@ -2,6 +2,7 @@
 
 var traceur = require('traceur');
 var Game = traceur.require(__dirname + '/../models/game.js');
+var User = traceur.require(__dirname + '/../models/user.js');
 
 exports.index = (req, res)=>{
   if(req.session.userId)
@@ -30,7 +31,21 @@ exports.play = (req, res)=>
 {
   Game.findById(req.params.gameId, game=>
   {
-    res.render('games/play', {game: game, title: 'Play Game'});
+    var userId = req.session.userId;
+    var isP1 = String(game.p1Id) === userId;
+    var isP2 = String(game.p2Id) === userId;
+    var isPlayerInThisGame = isP1 || isP2;
+    if(isPlayerInThisGame)
+    {
+      User.findById(userId, user=>
+      {
+        res.render('games/play', {game: game, user: user, isP1: isP1, title: 'Play Game'});
+      });
+    }
+    else
+    {
+      res.redirect('/games');
+    }
   });
 };
 
@@ -59,5 +74,55 @@ exports.join = (req, res)=>
     {
       res.redirect('/games');
     }
+  });
+};
+
+exports.shoot = (req, res)=>
+{
+  var gameId = req.params.gameId;
+  Game.findById(gameId, game=>
+  {
+    var userId = req.session.userId;
+    var isP1 = String(game.p1Id) === userId;
+    var isP2 = String(game.p2Id) === userId;
+    var isPlayerInThisGame = isP1 || isP2;
+    if(isPlayerInThisGame)
+    {
+      var move = req.body.move;
+      if(isP1)
+      {
+        game.setMove(1, move);
+      }
+      else if(isP2)
+      {
+        game.setMove(2, move);
+      }
+      game.save(()=>
+      {
+        var moves = game.getMoves();
+        res.send({moves: moves});
+      });
+    }
+    else
+    {
+      res.send(null);
+    }
+  });
+};
+
+exports.destroy = (req, res)=>
+{
+  var gameId = req.params.gameId;
+  Game.findById(gameId, game=>
+  {
+    var userId = req.session.userId;
+    var isP1 = String(game.p1Id) === userId;
+    var isP2 = String(game.p2Id) === userId;
+    var isPlayerInThisGame = isP1 || isP2;
+    if(isPlayerInThisGame)
+    {
+      game.destroy();
+    }
+    res.send(null);
   });
 };

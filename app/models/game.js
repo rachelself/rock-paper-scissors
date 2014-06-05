@@ -15,10 +15,45 @@ class Game{
     }
   }
 
+  destroy(fn)
+  {
+    gameCollection.remove({_id: this._id}, fn);
+  }
+
   join(userId)
   {
-    userId = Mongo.ObjectID(userId);
-    this.p2Id = this.p2Id ? this.p2Id : userId;
+    if(String(this.p1Id) !== userId)
+    {
+      this.p2Id = this.p2Id ? this.p2Id : userId;
+    }
+  }
+
+  setMove(playerNumber, move)
+  {
+    switch(playerNumber)
+    {
+      case 1:
+        this.p1move = move;
+        break;
+      case 2:
+        this.p2move = move;
+        break;
+      default:
+    }
+  }
+
+  getMoves()
+  {
+    var moves = [];
+    if(this.p1move)
+    {
+      moves.push(this.p1move);
+    }
+    if(this.p2move)
+    {
+      moves.push(this.p2move);
+    }
+    return moves;
   }
 
   static create(userId, fn)
@@ -26,8 +61,8 @@ class Game{
     var game = new Game();
     game.p1Id = Mongo.ObjectID(userId);
     game.p2Id = null;
-    game.move = null;
-    game.whoMoved1st = null;
+    game.p1move = null;
+    game.p2move = null;
     game.save(game=>fn(game));
   }
 
