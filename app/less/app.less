@@ -1,11 +1,22 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic|Oswald:400,300|Share);
+
 body{
   background-color: transparent !important;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
 }
 
-.logo{
-  height: 30px;
-  width: auto;
+h3.tagline{
+  font-family: 'Share', cursive;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
 }
+
+// .logo{
+//   height: 30px;
+//   width: auto;
+// }
 
 .container{
   margin-top: 30px;
@@ -36,12 +47,23 @@ li.email{
   border-color: #ea5e46;
 }
 
-#login-btn1.btn-success:hover,
-#login-btn1.btn-success:focus,
-#login-btn1.btn-success:active,
-#login-btn1.btn-success.active,
+#login-btn1:hover,
+#login-btn1:focus,
+#login-btn1:active,
+#login-btn1.active,
 .open #login-btn1.dropdown-toggle.btn-success {
   color: #ffffff;
   background-color: #ea5e46;
   border-color: #d24b40;
+}
+
+.rpstriangle{
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+}
+
+.submit{
+  width: 100%;
 }
