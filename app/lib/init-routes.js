@@ -29,7 +29,6 @@ function load(app, fn){
 
   app.get('/games', dbg, games.index);
   app.post('/games', dbg, games.new);
-  app.get('/games/:gameId', dbg, games.play);
   app.post('/games/:gameId', dbg, games.join);
   app.post('/games/:gameId/shoot', dbg, games.shoot);
   app.post('/games/:gameId/destroy', dbg, games.destroy);

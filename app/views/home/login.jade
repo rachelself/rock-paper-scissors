@@ -6,17 +6,21 @@ block content
     .col-md-4.column.centerspace
       form(role='form' action='/login' method='post')
         input(name='auth-type' value='#{type}' hidden='true')
+        if(type==='register')
+          h3.tagline Register New Account
+        else
+          h3.tagline Account Login
         .form-group
           label(for='emailinput1') Email
-            input.form-control#emailinput1(type='email' name='email' autofocus=true)
+          input.form-control#emailinput1(type='email' name='email' autofocus=true)
         .form-group
           label(for='passwordinput1') Password
-            input.form-control#passwordinput1(type='password' name='password')
+          input.form-control#passwordinput1(type='password' name='password')
         if(type==='register')
           .form-group
             label(for='nameinput1') Name
-              input.form-control#nameinput1(type='text' name='name')
-        button.btn.btn-default(type='submit' class='#{type}') Submit
+            input.form-control#nameinput1(type='text' name='name')
+        button.btn.btn-primary.submit(type='submit' class='#{type}') Submit
     .col-md-4.column
 
 block scripts

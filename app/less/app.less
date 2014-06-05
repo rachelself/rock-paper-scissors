@@ -1,10 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic|Oswald:400,300|Share);
+
+@teal: rgb(106, 153, 173);
+@teal-dark: rgb(61, 120, 137);
+@orange: #f07955;
+@orange-dark: #ea5e46;
+
+
 body{
   background-color: transparent !important;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+h3.tagline{
+  font-family: 'Share', cursive;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
 }
 
 .logo{
   height: 30px;
   width: auto;
+  margin-right: 5px;
 }
 
 .container{
@@ -12,7 +30,8 @@ body{
 }
 
 .col-md-4.column.centerspace{
-  background-color: rgba(255, 255, 255, 0.67);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 5px 5px 20px rgba(118, 115, 94, 0.8);
   padding: 20px;
   border-radius: 10px;
   margin: 20px;
@@ -36,22 +55,44 @@ li.email{
   border-color: #ea5e46;
 }
 
-#login-btn1.btn-success:hover,
-#login-btn1.btn-success:focus,
-#login-btn1.btn-success:active,
-#login-btn1.btn-success.active,
+#login-btn1:hover,
+#login-btn1:focus,
+#login-btn1:active,
+#login-btn1.active,
 .open #login-btn1.dropdown-toggle.btn-success {
   color: #ffffff;
   background-color: #ea5e46;
   border-color: #d24b40;
 }
 
+.rpstriangle{
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+}
+
+.submit{
+  width: 100%;
+}
+
 .gamepiece{
+  opacity: 0.6;
+    transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
   padding-top: 20px;
   display: block;
   margin: auto;
   height: 200px;
   width: 200px;
+}
+
+.gamepiece:hover{
+  opacity: 1.0;
+    transition: opacity .55s ease-in-out;
+    -moz-transition: opacity .55s ease-in-out;
+    -webkit-transition: opacity .55s ease-in-out;
 }
 
 .picked{
@@ -62,4 +103,182 @@ li.email{
 
 .timer{
   text-align: center;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  width: 200px;
+  height: 75px;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-family: 'Share', cursive;
+  font-size: 36px;
+}
+
+.fadeIn {
+        /* CSS needed for animation
+        ---------------------------------------------------- */
+        opacity:0;
+        -webkit-animation:fadeIn ease-in 1;
+        -moz-animation:fadeIn ease-in 1;
+        -o-animation:fadeIn ease-in 1;
+        animation:fadeIn ease-in 1;
+        -webkit-animation-fill-mode:forwards;
+        -moz-animation-fill-mode:forwards;
+        -o-animation-fill-mode:forwards;
+        animation-fill-mode:forwards;
+}
+/* Animation Times - Time for image to fade in
+---------------------------------------------------- */
+.fadeIn-1s {
+        -webkit-animation-duration:1s;
+        -moz-animation-duration:1s;
+        -o-animation-duration:1s;
+        animation-duration:1s;
+}
+
+.fadeIn-3s {
+        -webkit-animation-duration:3s;
+        -moz-animation-duration:3s;
+        -o-animation-duration:3s;
+        animation-duration:3s;
+}
+.fadeIn-5s {
+        -webkit-animation-duration:5s;
+        -moz-animation-duration:5s;
+        -o-animation-duration:5s;
+        animation-duration:5s;
+}
+/* Animation Delay - Time for image to be delayed
+---------------------------------------------------- */
+.fadeIn-Delay-1s {
+        -webkit-animation-delay:1s;
+        -moz-animation-delay:1s;
+        -o-animation-delay:1s;
+        animation-delay:1s;
+}
+
+.fadeIn-Delay-2s {
+        -webkit-animation-delay:2s;
+        -moz-animation-delay:2s;
+        -o-animation-delay:2s;
+        animation-delay:2s;
+}
+
+.fadeIn-Delay-4s {
+        -webkit-animation-delay:4s;
+        -moz-animation-delay:4s;
+        -o-animation-delay:4s;
+        animation-delay:4s;
+}
+.fadeIn-Delay-6s {
+        -webkit-animation-delay:6s;
+        -moz-animation-delay:6s;
+        -o-animation-delay:6s;
+        animation-delay:6s;
+}
+/* Key Frames
+---------------------------------------------------- */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-o-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.tinted-image{
+  background:
+    linear-gradient(
+      rgba(252, 242, 220, 0.46),
+      rgba(252, 242, 220, 0.46)
+    ),
+    url('/img/notebook.png');
+}
+
+.table > thead {
+  background:
+    linear-gradient(
+      @teal,
+      @teal-dark
+    );
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+
+}
+
+#availablegames{
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 2px 2px 2px rgba(120, 116, 96, 0.25);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0px;
+}
+
+.joingame, .newgame{
+  background-color: @orange;
+  border: 1px solid @orange-dark;
+}
+
+.joingame:hover,
+.joingame:focus,
+.joingame:active,
+.joingame.active,
+.open .joingame.dropdown-toggle.btn-success {
+  color: #ffffff;
+  background-color: @orange-dark;
+  border-color: @orange;
+}
+
+.newgame:hover,
+.newgame:focus,
+.newgame:active,
+.newgame.active,
+.open .newgame.dropdown-toggle.btn-success {
+  color: #ffffff;
+  background-color: @orange-dark;
+  border-color: @orange;
+}
+
+.count{
+  background-color: black;
+  padding: 5px 15px;
+  width: 50px;
+  color: white;
+}
+
+.col-xs-6.picked.p1, .col-xs-6.picked.p2{
+  width: 50%;
+  margin: 0;
+  padding: 20px;
+  background-size: 35%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.col-xs-6.picked.p1{
+  position: absolute;
+  top: 180px;
+  left: 0px;
+}
+
+
+.col-xs-6.picked.p2{
+  position: absolute;
+  top: 180px;
+  right: 0px;
+}
+
+.controls{
+  position: relative;
+  top: 420px;
+  left: -200px;
+}
+
+.gamepiece{
+  width: 100%;
+  height: 100px;
+  display: inline-block;
+}
+
+.selected{
+  border: 1px solid @orange;
+  opacity: 1;
 }

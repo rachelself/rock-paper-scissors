@@ -1,32 +1,43 @@
 extends ../shared/template
 
 block content
-
-  .container
-    .row.clearfix
-        .col-md-12.column
-          .page-header
-            h1
-              small Available Games
+  #wrapper
+    .container
       .row.clearfix
-        .col-md-12.column
-          dl
-            dt Number of Available Games
-            dt= games.length
-          form(action='/games', method='POST')
-            button.btn.btn-info New Game
-          table.table.table-hover
-            thead
-              tr
-                th
-                  | Users
-                th
-                  | Join a Game!
-            tbody
-              each game in games
+          .col-md-12.column
+            .page-header
+              h3.tagline Available Games
+        .row.clearfix
+          .col-md-12.column
+            dl
+              dt Number of Available Games
+              dt.count= games.length
+
+            form(action='/games', method='POST')
+              button.btn.btn-info.newgame New Game
+            table#availablegames.table.table-hover
+              thead
                 tr
-                  td= game._id
-                  td
-                    form(action='/games/#{game._id}' method='post')
-                      input(type='hidden' name='_method' value='put')
-                      button.btn.btn-success.btn-default.joingame Join Game
+                  th
+                    | Users
+                  th
+                    | Join a Game!
+              tbody
+                each game in games
+                  tr
+                    td= game._id
+                    td
+                      form(action='/games/#{game._id}' method='post')
+                        input(type='hidden' name='_method' value='put')
+                        button.btn.btn-success.btn-default.joingame Join Game
+
+block scripts
+  script(src='/js/es6/compiled/games.js')
+
+
+
+//- h6 Number of Available Games
+//- #count.nav.nav-pills.nav-stacked
+//-   li.active
+//-     a(href='#')
+//-       span.badge.pull-right= games.length

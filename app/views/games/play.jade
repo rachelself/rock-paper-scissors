@@ -5,11 +5,11 @@ block content
   #game.container(data-user=user data-gameId=gameId data-isp1=(isP1 ? 'true' : 'false'))
     .row.clearfix
         .col-md-12.column
-          h3.timer
+          h3.timer 0:00
       .row.clearfix
-        .col-md-6.column.picked
+        .col-xs-6.picked.p1
           img.gamepiece#player(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
-        .col-md-6.column.picked
+        .col-xs-6.picked.p2
           img.gamepiece#opponent(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
       #moves.row.clearfix
         .col-md-4.column
@@ -20,4 +20,5 @@ block content
           img.gamepiece#scissors(src='/img/scissors.png')
 
 block scripts
-  script(src='/js/es6/compiled/game.js')
+  script(src='/js/es6/compiled/games.js')
+  script(src='/js/es6/compiled/playgame.js')
