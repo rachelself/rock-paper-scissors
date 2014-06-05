@@ -31,6 +31,8 @@ function load(app, fn){
   app.get('/games/:gameId', dbg, games.play);
   app.post('/games/:gameId', dbg, games.join);
 
+  app.get('*', dbg, home.notFound);
+
   console.log('Routes Loaded');
   fn();
 }

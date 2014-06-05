@@ -4,10 +4,17 @@ var traceur = require('traceur');
 var Game = traceur.require(__dirname + '/../models/game.js');
 
 exports.index = (req, res)=>{
-  Game.findOpenGames(games=>
+  if(req.session.userId)
   {
-    res.render('games/index', {games: games, title: 'Available Games'});
-  });
+    Game.findOpenGames(games=>
+    {
+      res.render('games/index', {games: games, title: 'Available Games'});
+    });
+  }
+  else
+  {
+    res.redirect('/');
+  }
 };
 
 exports.new = (req, res)=>

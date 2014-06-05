@@ -4,12 +4,17 @@ var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 
 exports.index = (req, res)=>{
-  console.log('-----Home index --------');
-  res.render('home/index', {title: 'To Do Home Page'});
+  if(!req.session.userId)
+  {
+    res.render('home/index', {title: 'Rock Paper Scissors - Welcome!'});
+  }
+  else
+  {
+    res.redirect('/games');
+  }
 };
 
 exports.login = (req, res)=>{
-  console.log('in LOGIN');
   res.render('home/login', {type:'login'});
 };
 
@@ -47,4 +52,9 @@ exports.authenticate = (req, res)=>{
       }
     });
   }
+};
+
+exports.notFound = (req, res)=>
+{
+  res.redirect('/');
 };
