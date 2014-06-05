@@ -5,7 +5,7 @@ var User = traceur.require(__dirname + '/../models/user.js');
 
 exports.index = (req, res)=>{
   console.log('-----Home index --------');
-  res.render('home/index', {title: 'To Do Home Page'});
+  res.render('home/index', {title: 'Rock, Paper, Scissors'});
 };
 
 exports.login = (req, res)=>{
