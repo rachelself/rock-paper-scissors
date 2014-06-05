@@ -31,12 +31,13 @@ html
                   img.logo(src='img/logo.png')
               #bs-example-navbar-collapse-1.collapse.navbar-collapse
 
-                if(user._id !== null)
+                if(user._id)
                   ul.nav.navbar-nav.navbar-right
                     li.email= user.email
                     li
-                      a(href='/logout') Logout
-                else
+                      form(action='/logout' method='post')
+                        button Logout
+                else if(!user._id)
                   ul.nav.navbar-nav.navbar-right
                     li.active
                       a.btn.disabled(href='#') Welcome
