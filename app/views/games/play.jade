@@ -8,9 +8,15 @@ block content
           h3.timer 0:00
       .row.clearfix
         .col-xs-6.picked.p1
-          img.gamepiece#player(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
+          if(moves === undefined)
+            img.gamepiece#player(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='none')
+          else if(user._id.toString() === p1Id.toString())
+            img.gamepiece#player(src='/img/#{moves.p1move}.png' style='min-height: 100px; min-width: 100px;' data-move='#{move.p1move}')
         .col-xs-6.picked.p2
-          img.gamepiece#opponent(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
+          if(moves === undefined)
+            img.gamepiece#player(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='none')
+          else if(user._id.toString() === p2Id.toString())
+            img.gamepiece#opponent(src='/img/#{moves.p2move}.png' style='min-height: 100px; min-width: 100px;' data-move='#{move.p2move}')
       #moves.row.clearfix
         .col-md-4.column
           img.gamepiece#rock(src='/img/rock.png')

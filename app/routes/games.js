@@ -1,3 +1,5 @@
+/* jshint unused:false */
+
 'use strict';
 
 var traceur = require('traceur');
@@ -58,20 +60,24 @@ exports.join = (req, res)=>
     {
       game.join(req.session.userId);
       var didJoin = String(game.p2Id) === req.session.userId;
-      if(didJoin)
+      // if(didJoin)
+      if(1)
       {
         game.save(()=>
         {
-          res.redirect('/games/'+gameId);
+          console.log('----good------');
+          res.redirect('/games/'+gameId+'/play');
         });
       }
       else
       {
+        console.log('----bad1------');
         res.redirect('/games');
       }
     }
     else
     {
+      console.log('----bad2------');
       res.redirect('/games');
     }
   });
@@ -124,5 +130,12 @@ exports.destroy = (req, res)=>
       game.destroy();
     }
     res.send(null);
+  });
+};
+
+exports.play = (req, res)=>{
+  var gameId = req.params.gameId;
+  Game.findById(gameId, game=>{
+    res.render('games/play', {game:game});
   });
 };

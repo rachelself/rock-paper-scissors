@@ -28,7 +28,7 @@ block content
                     td(data-gameId=game._id.toString())= game.p1Id
                     td
                       form(action='/games/#{game._id}' method='post')
-                        input(type='hidden' name='_method' value='put')
+                        //- input(type='hidden' name='_method' value='put')
                         button.btn.btn-success.btn-default.joingame Join Game
 
 block scripts
