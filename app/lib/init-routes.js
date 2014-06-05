@@ -24,11 +24,16 @@ function load(app, fn){
   app.get('/login', dbg, home.login);
   app.post('/login', dbg, home.authenticate);
   app.get('/register', dbg, home.register);
+
   app.post('/logout', dbg, users.logout);
+
   app.get('/games', dbg, games.index);
-  app.get('/games/:id', dbg, games.play);
   app.post('/games', dbg, games.new);
   app.post('/games/:gameId', dbg, games.join);
+  app.post('/games/:gameId/shoot', dbg, games.shoot);
+  app.post('/games/:gameId/destroy', dbg, games.destroy);
+
+  app.get('*', dbg, home.notFound);
 
   console.log('Routes Loaded');
   fn();

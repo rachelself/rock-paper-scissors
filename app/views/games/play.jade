@@ -1,27 +1,25 @@
 extends ../shared/template
 
 block content
-  h2= game._id
-  h2= game.p1Id
-  .container
+  - var gameId = String(game._id);
+  #game.container(data-user=user data-gameId=gameId data-isp1=(isP1 ? 'true' : 'false'))
     .row.clearfix
         .col-md-12.column
-          h3.timer 0:00
+          h3.timer
       .row.clearfix
         .col-xs-6.picked.p1(style='background-image: url("/img/question.png");')
+          img.gamepiece#player(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
         .col-xs-6.picked.p2(style='background-image: url("/img/question.png");')
-      .row.clearfix
-        .col-xs-6.column.controls
-          img.gamepiece.rock(src='/img/rock.svg')
-          img.gamepiece.paper(src='/img/paper.svg')
-          img.gamepiece.scissors(src='/img/scissors.svg')
-        .col-xs-6.column.controls
-          img.gamepiece.rock(src='/img/rock.svg')
-          img.gamepiece.paper(src='/img/paper.svg')
-          img.gamepiece.scissors(src='/img/scissors.svg')
-
-
+          img.gamepiece#opponent(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
+      #moves.row.clearfix
+        .col-md-4.column
+          img.gamepiece#rock(src='/img/rock.png')
+        .col-md-4.column
+          img.gamepiece#paper(src='/img/paper.png')
+        .col-md-4.column
+          img.gamepiece#scissors(src='/img/scissors.png')
 
 block scripts
   script(src='/js/es6/compiled/games.js')
   script(src='/js/es6/compiled/playgame.js')
+  script(src='/js/es6/compiled/game.js')
