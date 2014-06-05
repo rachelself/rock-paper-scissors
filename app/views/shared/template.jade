@@ -14,7 +14,6 @@ html
     link(rel='shortcut icon' href='img/favicon.png')
 
   body
-  p= typeof(user.email)
     navbar.navbar-default.navbar-fixed-top
 
     .container
@@ -30,14 +29,13 @@ html
                 a.navbar-brand(href='/')
                   img.logo(src='img/logo.png')
               #bs-example-navbar-collapse-1.collapse.navbar-collapse
-
-                if(user._id)
+                if(user._id !== undefined)
                   ul.nav.navbar-nav.navbar-right
                     li.email= user.email
                     li
                       form(action='/logout' method='post')
-                        button Logout
-                else if(!user._id)
+                        button.btn.btn-default.logout Logout
+                else
                   ul.nav.navbar-nav.navbar-right
                     li.active
                       a.btn.disabled(href='#') Welcome
