@@ -25,7 +25,7 @@ block content
               tbody
                 each game in games
                   tr
-                    td= game._id
+                    td(data-gameId=game._id.toString())= game.p1Id
                     td
                       form(action='/games/#{game._id}' method='post')
                         input(type='hidden' name='_method' value='put')
@@ -33,11 +33,3 @@ block content
 
 block scripts
   script(src='/js/es6/compiled/games.js')
-
-
-
-//- h6 Number of Available Games
-//- #count.nav.nav-pills.nav-stacked
-//-   li.active
-//-     a(href='#')
-//-       span.badge.pull-right= games.length
