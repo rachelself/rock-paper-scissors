@@ -7,9 +7,9 @@ block content
         .col-md-12.column
           h3.timer
       .row.clearfix
-        .col-xs-6.picked.p1(style='background-image: url("/img/question.png");')
+        .col-md-6.column.picked
           img.gamepiece#player(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
-        .col-xs-6.picked.p2(style='background-image: url("/img/question.png");')
+        .col-md-6.column.picked
           img.gamepiece#opponent(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
       #moves.row.clearfix
         .col-md-4.column
@@ -20,6 +20,4 @@ block content
           img.gamepiece#scissors(src='/img/scissors.png')
 
 block scripts
-  script(src='/js/es6/compiled/games.js')
-  script(src='/js/es6/compiled/playgame.js')
   script(src='/js/es6/compiled/game.js')

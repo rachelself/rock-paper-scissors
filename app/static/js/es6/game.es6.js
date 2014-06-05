@@ -10,26 +10,29 @@ $(function(){
   var gameId = $game.data('gameid');
   var isP1 = $game.data('isp1');
 
-  $(window).unload(()=>
-  {
-    ajax(`/games/${gameId}/destroy`, 'POST', {}, ()=>{});
-    socket.emit('quit', {gameId: gameId});
-  });
+  // $(window).unload(()=>
+  // {
+  //   ajax(`/games/${gameId}/destroy`, 'POST', {}, ()=>{});
+  //   socket.emit('quit', {gameId: gameId});
+  // });
 
   initializeSocketIo();
 
   function playGame(data)
   {
+    console.log('PLAY GAME');
     start();
 
     function start()
     {
+      console.log('START GAME');
       socket.removeAllListeners(`joined-${gameId}`);
       allowUserInput();
 
       var time = 3;
       var $timer = $('#game .timer');
       var timer = setInterval(tickClock, 1000);
+      // setTimeout(tickClock, 1000);
 
       function allowUserInput()
       {
@@ -45,17 +48,24 @@ $(function(){
 
       function tickClock()
       {
+        console.log(time);
         $timer.text(time);
         if(--time < 0)
         {
+          clearInterval(timer);
           submitMove();
         }
+        // else
+        // {
+        //   setTimeout(tickClock, 1000);
+        // }
       }
 
       function submitMove()
       {
+        socket.on('result-'+gameId, checkResult);
+
         disallowUserInput();
-        clearInterval(timer);
         $timer.text('');
 
         var move = $('#player').attr('data-move');
@@ -65,7 +75,6 @@ $(function(){
           data = jQuery.parseJSON(data);
           if(data.moves.length >= 2)
           {
-            socket.on('result-'+gameId, checkResult);
             socket.emit('shoot', {moves: data.moves, gameId: gameId});
           }
         });
@@ -107,6 +116,7 @@ $(function(){
 
       function restart()
       {
+        console.log('RESTART');
         ajax(`/games/${gameId}/restart`, 'POST', {}, ()=>
         {
           clearMoves();
@@ -119,7 +129,8 @@ $(function(){
         var playerImgs = [$('#player'), $('#opponent')];
         playerImgs.forEach($player=>
         {
-          $player.attr('src', '/img/nothing/png');
+          $player.attr('src', '/img/nothing.png');
+          $player.attr('data-move', 'nothing');          
         });
       }
 
@@ -168,10 +179,11 @@ $(function(){
     socket = io.connect('/game');
     socket.on('quit', ()=>
     {
-      window.location.href = '/games';
+      // window.location.href = '/games';
     });
     socket.on('connect', ()=>
     {
+      console.log('BEGIN');
       socket.on(`joined-${gameId}`, playGame);
       if(!isP1)
       {

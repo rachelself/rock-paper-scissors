@@ -126,3 +126,23 @@ exports.destroy = (req, res)=>
     res.send(null);
   });
 };
+
+exports.restart = (req, res)=>
+{
+  var gameId = req.params.gameId;
+  Game.findById(gameId, game=>
+  {
+    var userId = req.session.userId;
+    var isP1 = String(game.p1Id) === userId;
+    var isP2 = String(game.p2Id) === userId;
+    var isPlayerInThisGame = isP1 || isP2;
+    if(isPlayerInThisGame)
+    {
+      game.restart();
+      game.save(()=>
+      {
+        res.send();
+      });
+    }
+  });
+};

@@ -28,10 +28,12 @@ function load(app, fn){
   app.post('/logout', dbg, users.logout);
 
   app.get('/games', dbg, games.index);
+  app.get('/games/:gameId', dbg, games.play);
   app.post('/games', dbg, games.new);
   app.post('/games/:gameId', dbg, games.join);
   app.post('/games/:gameId/shoot', dbg, games.shoot);
   app.post('/games/:gameId/destroy', dbg, games.destroy);
+  app.post('/games/:gameId/restart', dbg, games.restart);
 
   app.get('*', dbg, home.notFound);
 

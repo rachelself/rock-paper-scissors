@@ -42,6 +42,12 @@ class Game{
     }
   }
 
+  restart(fn)
+  {
+    this.p1move = null;
+    this.p2move = null;
+  }
+
   getMoves()
   {
     var moves = [];
