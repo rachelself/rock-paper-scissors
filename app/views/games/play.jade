@@ -6,10 +6,12 @@ block content
     .row.clearfix
         .col-md-12.column
           h3.timer
-      .row.clearfix
-        .col-md-6.column.picked
+      .row.clearfix#board
+        .col-md-6.column.picked.player1
+          h1 You
           img.gamepiece#player(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
-        .col-md-6.column.picked
+        .col-md-6.column.picked.player2
+          h1 The Other Guy
           img.gamepiece#opponent(src='/img/nothing.png' style='min-height: 100px; min-width: 100px;' data-move='')
       #moves.row.clearfix
         .col-md-4.column
